@@ -4,6 +4,18 @@ namespace GameEvents
 {
     public class BroadcasterScript : MonoBehaviour
     {
+        public PlayerStatsScriptableObject playerEvents;
+        public GameManagerScriptableObject gameStateEvents;
+
+        private void Start() 
+        {
+            playerEvents.deathEvent += CallGameOver;
+        }
+
+        void CallGameOver()
+        {
+            gameStateEvents.Lose();
+        }
 
 
         #region playerEvents

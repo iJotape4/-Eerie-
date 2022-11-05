@@ -44,4 +44,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4704a5ce1c5b4f241a050e45d6741d69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerEvents: {fileID: 11400000, guid: ae0f52ee95aac2541bfc18e49fdbd911, type: 2}
+  playerEvents: {fileID: 11400000, guid: 92ee8681bc75fe546bffd52c4546f75e, type: 2}
+  gameStateEvents: {fileID: 11400000, guid: 1a6e8c20268b023479eeed85eae91e4d, type: 2}
