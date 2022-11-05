@@ -4,10 +4,12 @@ namespace PlayerScripts
 {
     [RequireComponent(typeof(PlayerMovement))]
     [RequireComponent(typeof(PlayerLook))]
+    [RequireComponent(typeof(PlayerStatsListener))]
     public class InputManager : MonoBehaviour
     {
         [SerializeField] PlayerMovement movement;
        [SerializeField] PlayerLook mouseLook;
+       [SerializeField] PlayerStatsListener stats;
        // [SerializeField] PickUp pickUp;
         //[SerializeField] Fire fire;
 
@@ -25,6 +27,7 @@ namespace PlayerScripts
         {
             movement=GetComponent<PlayerMovement>();
             mouseLook=GetComponent<PlayerLook>();
+             stats=GetComponent<PlayerStatsListener>();
 
             /*pickUp = GetComponent<PickUp>();
             fire = GetComponent<Fire>();*/
@@ -55,6 +58,7 @@ namespace PlayerScripts
             
             movement.ReceiveInput(horizontalInput, jump);
             mouseLook.ReceiveInput(mouseInput);
+            stats.ReceiveInput(jump);
 
            /* interact = groundMovement.Interact.WasReleasedThisFrame();
             shoot = groundMovement.Fire.WasReleasedThisFrame();

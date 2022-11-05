@@ -3,9 +3,9 @@ using GameEvents;
 
 namespace PlayerScripts
 {
-    public class PlayerStatsListener : MonoBehaviour
+    public class PlayerStatsListener : MonoBehaviour, IDamageable
     {
-        public PlayerEvents playerStats;
+        public PlayerStatsScriptableObject playerStats;
 
         [Header("Consumable Stats")]
         [SerializeField] protected float _health;
@@ -20,7 +20,7 @@ namespace PlayerScripts
 
         private void OnEnable() 
         {
-            playerStats.armorChangeEvent+= ChangeHealth;  
+            playerStats.healthChangeEvent += ChangeHealth;  
             playerStats.damageChangeEvent+= ChangeDamage; 
             playerStats.armorChangeEvent+= ChangeArmor;
         }
@@ -32,19 +32,21 @@ namespace PlayerScripts
             playerStats.armorChangeEvent-= ChangeArmor;
         }
 
-        private void ChangeHealth(float health)
-        {
+        public void ChangeHealth(float health)=>      
             _health = health;
-        }
+                
 
-        private void ChangeArmor(float armor)
-        {
+        private void ChangeArmor(float armor)=>        
             _armor = armor;
-        }
+        
 
-        private void ChangeDamage(float damage)
+        private void ChangeDamage(float damage)=>       
+            _damage = damage;       
+
+        public void ReceiveInput(bool jump)
         {
-            _damage = damage;
+            if(jump)
+                playerStats.DecreaseHealth(17);
         }
     }
 }

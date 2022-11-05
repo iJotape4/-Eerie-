@@ -4,29 +4,29 @@ namespace GameEvents
 {
     public class BroadcasterScript : MonoBehaviour
     {
-        public PlayerEvents playerEvents;
+
 
         #region playerEvents
-        public void ChangePlayerHealth(float health) 
+        /*public void ChangePlayerHealth(float health) 
         {
             if(playerEvents == null)
                 return;
-            playerEvents.RaisedHealthChangeEvent(health);
+            playerEvents.healthChangeEvent(health);
         }
 
         public void ChangePlayerArmor(float armor) 
         {
             if(playerEvents == null)
                 return;
-            playerEvents.RaisedArmorChangeEvent(armor);
+            playerEvents.armorChangeEvent(armor);
         }
 
         public void ChangePlayerDamage(float damage) 
         {
             if(playerEvents == null)
                 return;
-            playerEvents.RaisedDamageChangeEvent(damage);
-        }
+            playerEvents.damageChangeEvent(damage);
+        }*/
         #endregion
     }
 }
