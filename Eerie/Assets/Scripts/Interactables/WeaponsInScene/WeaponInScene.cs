@@ -6,10 +6,10 @@ namespace Interactables
 {
     [RequireComponent(typeof(Rigidbody))]
     [RequireComponent(typeof(BoxCollider))]
-    public class WeaponInScene : PickableItem, IAutoRotatable
+    public abstract class WeaponInScene : PickableItem, IAutoRotatable, IRespawneable
     {
-        [HideInInspector] private Rigidbody rb;
-        [HideInInspector] private BoxCollider bc;
+        [HideInInspector] protected Rigidbody rb;
+        [HideInInspector] protected BoxCollider bc;
 
         [Range(0.001f, 0.01f)]
         public float rotationSpeed = 0.005f;
@@ -36,10 +36,10 @@ namespace Interactables
             StartCoroutine(RotateOnItsOwnAxis());
         }
 
-        public override void Pick()
-        {
-
-        }
+        public abstract override void Pick();
+        
+        public abstract void Respawn();
+        public abstract void TurnShowItemOnScene(bool show);
 
     } 
 }

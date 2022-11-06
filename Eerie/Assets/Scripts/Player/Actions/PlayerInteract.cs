@@ -47,7 +47,7 @@ namespace PlayerScripts
             {
                 var selection = hit.transform;
 
-                if(selection.CompareTag(interactableItemTag))
+                if(selection.CompareTag(interactableItemTag) || selection.CompareTag(pickabletemTag))
                 {
                     if(selection.gameObject.GetComponent<BoxCollider>() != null && selection.gameObject.GetComponent<BoxCollider>().isTrigger)
                         return;

@@ -214,7 +214,7 @@ GameObject:
   - component: {fileID: 8487672456660134151}
   - component: {fileID: 2553444215472706790}
   - component: {fileID: 4993201048459164894}
-  - component: {fileID: 262408457191942303}
+  - component: {fileID: 2710990583254325013}
   m_Layer: 9
   m_Name: Bible
   m_TagString: Weapon
@@ -316,7 +316,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.37, y: 0.30469137, z: 0.385959}
   m_Center: {x: -0.00046331054, y: 0.0113737555, z: 0.20405887}
---- !u!114 &262408457191942303
+--- !u!114 &2710990583254325013
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -325,7 +325,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2583841881784862158}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea8f93b174126c141a2248dcaf7cbdaa, type: 3}
+  m_Script: {fileID: 11500000, guid: 64110ac30689a604a9aef80f4cdc6597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   rotationSpeed: 0.005
@@ -423,7 +423,7 @@ GameObject:
   - component: {fileID: 2475140448554060659}
   - component: {fileID: 262408457191942288}
   - component: {fileID: 262408457191942289}
-  - component: {fileID: 262408457191942290}
+  - component: {fileID: 4749500408067081918}
   m_Layer: 9
   m_Name: HolyWater
   m_TagString: Weapon
@@ -476,7 +476,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.12, y: 0.22, z: 0.08}
   m_Center: {x: 0, y: 0.11, z: 0}
---- !u!114 &262408457191942290
+--- !u!114 &4749500408067081918
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -485,10 +485,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 4326096242152048582}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea8f93b174126c141a2248dcaf7cbdaa, type: 3}
+  m_Script: {fileID: 11500000, guid: 28de7c5bde91b744ca7a2becbc3a2d28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   rotationSpeed: 0.005
+  meshes: []
 --- !u!1 &7332995583084187531
 GameObject:
   m_ObjectHideFlags: 0
