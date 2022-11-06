@@ -49,6 +49,9 @@ namespace PlayerScripts
 
                 if(selection.CompareTag(interactableItemTag))
                 {
+                    if(selection.gameObject.GetComponent<BoxCollider>() != null && selection.gameObject.GetComponent<BoxCollider>().isTrigger)
+                        return;
+
                     _selection = selection;
                     playerStatsListener.playerStats.interactableFoundEvent?.Invoke(true);
 
