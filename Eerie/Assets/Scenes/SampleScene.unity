@@ -11387,6 +11387,25 @@ PrefabInstance:
         type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2089475c9315b274cb58ca49f58ef8ed, type: 3}
+--- !u!1 &5747058736536472876 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2583841881784862158, guid: 32e83e38d4ece2c44a63148620809b85,
+    type: 3}
+  m_PrefabInstance: {fileID: 7789540673662716130}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6898958670415783387
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5747058736536472876}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64110ac30689a604a9aef80f4cdc6597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationSpeed: 0.005
 --- !u!1001 &7789540673662716130
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11454,7 +11473,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Weapons In Scene
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1606720793342757180, guid: 32e83e38d4ece2c44a63148620809b85, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 32e83e38d4ece2c44a63148620809b85, type: 3}
 --- !u!1001 &8085107904488995377
 PrefabInstance:
