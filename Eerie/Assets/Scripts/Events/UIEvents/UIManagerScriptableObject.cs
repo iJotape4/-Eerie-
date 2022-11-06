@@ -3,7 +3,7 @@ using UnityEngine.Events;
 
 namespace GameEvents
 {
-    [CreateAssetMenu(fileName = "UiManagerScriptableObject", menuName = "ScriptableObjects/UiManagerScriptableObject", order = 0)]
+    [CreateAssetMenu(fileName = "UiManagerScriptableObject", menuName = "ScriptableObjects/Events/UiManagerScriptableObject", order = 0)]
     public class UIManagerScriptableObject : ScriptableObject 
     {
         public UnityAction<bool> togglePressEIconEvent;       

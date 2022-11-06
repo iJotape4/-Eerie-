@@ -17,6 +17,7 @@ namespace Interactables
         public override void Pick()
         {
             TurnShowItemOnScene(false);
+            interactableEventsScriptableObject.PickHolyWater(weaponType.GetStatsValues());
         }
 
          public override void Respawn()=>

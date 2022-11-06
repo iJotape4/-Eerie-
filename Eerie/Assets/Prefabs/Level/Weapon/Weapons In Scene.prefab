@@ -328,6 +328,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64110ac30689a604a9aef80f4cdc6597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interactableEventsScriptableObject: {fileID: 11400000, guid: 2b78f357fa44e794e8f518975f9c3ddb,
+    type: 2}
   weaponType: {fileID: 11400000, guid: b22a63bab445c644c87eab4d0fa641dd, type: 2}
   rotationSpeed: 0.005
 --- !u!1 &4226738380457207557
@@ -489,6 +491,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28de7c5bde91b744ca7a2becbc3a2d28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interactableEventsScriptableObject: {fileID: 11400000, guid: 2b78f357fa44e794e8f518975f9c3ddb,
+    type: 2}
   weaponType: {fileID: 11400000, guid: 613bec523e4d7aa479197ff7646affd1, type: 2}
   rotationSpeed: 0.005
   meshes: []

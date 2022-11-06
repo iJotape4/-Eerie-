@@ -18,6 +18,9 @@ namespace Interactables
         public override void Pick()
         {
             TurnShowItemOnScene(false);
+            foreach(float f in weaponType.GetStatsValues())
+            Debug.Log(f);
+            interactableEventsScriptableObject.PickBible(weaponType.GetStatsValues());
         }
 
         public override void Respawn()=>       
