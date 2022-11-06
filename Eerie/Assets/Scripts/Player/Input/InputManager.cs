@@ -5,12 +5,13 @@ namespace PlayerScripts
     [RequireComponent(typeof(PlayerMovement))]
     [RequireComponent(typeof(PlayerLook))]
     [RequireComponent(typeof(PlayerStatsListener))]
+    [RequireComponent(typeof(PlayerInteract))]
     public class InputManager : MonoBehaviour
     {
-        [SerializeField] PlayerMovement movement;
+    [SerializeField] PlayerMovement movement;
        [SerializeField] PlayerLook mouseLook;
        [SerializeField] PlayerStatsListener stats;
-       // [SerializeField] PickUp pickUp;
+       [SerializeField] PlayerInteract pickUp;
         //[SerializeField] Fire fire;
 
         PlayerInput controls;
@@ -18,19 +19,20 @@ namespace PlayerScripts
 
         Vector2 horizontalInput;
         Vector2 mouseInput;
+        Vector2 mousePosition;
         bool jump;
-        /*bool interact;
-        bool shoot;
+        bool interact;
+        /*bool shoot;
         bool holdShoot;*/
 
         private void Awake() 
         {
             movement=GetComponent<PlayerMovement>();
             mouseLook=GetComponent<PlayerLook>();
-             stats=GetComponent<PlayerStatsListener>();
+            stats=GetComponent<PlayerStatsListener>();
 
-            /*pickUp = GetComponent<PickUp>();
-            fire = GetComponent<Fire>();*/
+            pickUp = GetComponent<PlayerInteract>();
+            /*fire = GetComponent<Fire>();*/
 
             controls = new PlayerInput();
             groundMovement = controls.Player;
@@ -38,6 +40,8 @@ namespace PlayerScripts
             groundMovement.Move.performed += ctx => horizontalInput = ctx.ReadValue<Vector2>();
 
             groundMovement.Look.performed += ctx => mouseInput = ctx.ReadValue<Vector2>();
+
+            groundMovement.MousePosition.performed += ctx => mousePosition = ctx.ReadValue<Vector2>();
             
             //groundMovement.Look.performed += ctx => mouseInput.y = ctx.ReadValue<float>();
         }
@@ -54,17 +58,18 @@ namespace PlayerScripts
 
         void Update()
         {
-            jump = groundMovement.Jump.WasPerformedThisFrame();
+            jump = groundMovement.Jump.WasReleasedThisFrame();
+            interact = groundMovement.Interact.WasReleasedThisFrame();
             
             movement.ReceiveInput(horizontalInput, jump);
             mouseLook.ReceiveInput(mouseInput);
             stats.ReceiveInput(jump);
+            pickUp.ReceiveInput(interact, mousePosition);
 
-           /* interact = groundMovement.Interact.WasReleasedThisFrame();
-            shoot = groundMovement.Fire.WasReleasedThisFrame();
+            /*shoot = groundMovement.Fire.WasReleasedThisFrame();
             holdShoot = groundMovement.Fire.IsPressed();
 
-            pickUp.ReceiveInput(interact);
+            
             fire.ReceiveInput(shoot, holdShoot);*/
 
         }

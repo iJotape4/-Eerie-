@@ -22,6 +22,7 @@ namespace GameEvents
         [System.NonSerialized] public UnityAction<float> armorChangeEvent;
 
         [System.NonSerialized] public UnityAction deathEvent;
+        [System.NonSerialized] public UnityAction<bool> interactableFoundEvent;
 
         private void OnEnable()=>
             health = maxHealth;               

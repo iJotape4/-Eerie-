@@ -1,11 +1,8 @@
 {
-    "name": "Player",
+    "name": "UIevents",
     "rootNamespace": "",
     "references": [
-        "GUID:75469ad4d38634e559750d17036d5f7c",
-        "GUID:126db78cc28aef04f966473c9c57dbf2",
-        "GUID:455c41c4269151342ae3b5c9f2604254",
-        "GUID:4a0b517be37c4d6469ca7d4c7f7d9351"
+        "GUID:126db78cc28aef04f966473c9c57dbf2"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

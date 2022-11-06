@@ -6,15 +6,29 @@ namespace GameEvents
     {
         public PlayerStatsScriptableObject playerEvents;
         public GameManagerScriptableObject gameStateEvents;
+        public UIManagerScriptableObject uiEvents;
 
         private void Start() 
         {
             playerEvents.deathEvent += CallGameOver;
+            playerEvents.interactableFoundEvent += ActivatePressEIcon;
         }
 
         void CallGameOver()
         {
             gameStateEvents.Lose();
+        }
+        
+        void ActivatePressEIcon(bool value)
+        {
+            if(value)
+            {
+                uiEvents.ActivatePressEIcon();
+            }
+            else
+            {
+                uiEvents.DeactivatePressEIcon();
+            }
         }
 
 
