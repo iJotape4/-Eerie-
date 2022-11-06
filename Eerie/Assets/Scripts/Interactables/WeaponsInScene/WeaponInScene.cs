@@ -1,6 +1,6 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using WeaponsScripts;
 
 namespace Interactables
 {
@@ -10,6 +10,7 @@ namespace Interactables
     {
         [HideInInspector] protected Rigidbody rb;
         [HideInInspector] protected BoxCollider bc;
+        [SerializeField] public WeaponScriptableObject weaponType;
 
         [Range(0.001f, 0.01f)]
         public float rotationSpeed = 0.005f;
