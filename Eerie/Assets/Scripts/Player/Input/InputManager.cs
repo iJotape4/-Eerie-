@@ -24,7 +24,7 @@ namespace PlayerScripts
         Vector2 mousePosition;
         bool jump;
         bool interact;
-        int currentWeapon;
+        WeaponsList currentWeapon;
         /*bool shoot;
         bool holdShoot;*/
 
@@ -81,16 +81,16 @@ namespace PlayerScripts
 
         }
 
-        private int  SetCurrentWeapon()
+        private WeaponsList  SetCurrentWeapon()
         {
-            int selectedWeapon=currentWeapon;
+            WeaponsList selectedWeapon=currentWeapon;
 
             if(groundMovement.SelectWeapon1.WasReleasedThisFrame())
-                selectedWeapon = 0;
+                selectedWeapon = WeaponsList.Barehand;
             if(groundMovement.SelectWeapon2.WasReleasedThisFrame())
-                selectedWeapon = 1;
+                selectedWeapon = WeaponsList.Bible;
             if(groundMovement.SelectWeapon3.WasReleasedThisFrame())
-                selectedWeapon = 2;
+                selectedWeapon = WeaponsList.HolyWater;
 
             return selectedWeapon;
         }

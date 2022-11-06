@@ -5,7 +5,7 @@ namespace PlayerScripts
     public class WeaponsManager : MonoBehaviour
     {
         [SerializeField] private GameObject currentWeapon;
-        [SerializeField] private int _currentWeaponIndex=0;
+        [SerializeField] private WeaponsList _currentWeaponIndex=0;
         [SerializeField] private GameObject[] weapons;
 
         [Header("Animation Parameters")]
@@ -42,15 +42,20 @@ namespace PlayerScripts
                 currentWeapon.SetActive(false);
                 currentWeapon = weapons[index];
                 currentWeapon.SetActive(true);
-                _currentWeaponIndex = index;
-                SetCurrentWeapon(_currentWeaponIndex);
+                _currentWeaponIndex = (WeaponsList)index;
+                SetCurrentWeapon(((int)_currentWeaponIndex));
             }
 
-        public void ReceiveInput(int index)
+        public void ReceiveInput(WeaponsList index)
         {
-            if(index!=_currentWeaponIndex)
-                StartCoroutine(ShowWeapon(index));
+            if(index!= _currentWeaponIndex)
+                StartCoroutine(ShowWeapon(((int)index)));
         }       
         
+    }
+
+    public enum WeaponsList
+    {
+        Barehand, Bible, HolyWater
     }
 }

@@ -19,7 +19,6 @@ GameObject:
   - component: {fileID: 8085107903338128455}
   - component: {fileID: 1769004961112996726}
   - component: {fileID: 2287245948754391927}
-  - component: {fileID: 1337970171}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -220,22 +219,6 @@ MonoBehaviour:
   playerStatsListener: {fileID: 0}
   _cam: {fileID: 8085107904768684024}
 --- !u!114 &2287245948754391927
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8085107903338128477}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 282f8f31b0a5977418c2c9a0d8deb1ec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentWeapon: {fileID: 7290686615169384578}
-  _currentWeaponIndex: 0
-  weapons: []
-  _anim: {fileID: 0}
---- !u!114 &1337970171
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
