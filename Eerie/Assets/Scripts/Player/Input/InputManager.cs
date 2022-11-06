@@ -6,12 +6,14 @@ namespace PlayerScripts
     [RequireComponent(typeof(PlayerLook))]
     [RequireComponent(typeof(PlayerStatsListener))]
     [RequireComponent(typeof(PlayerInteract))]
+    [RequireComponent(typeof(WeaponsManager))]
     public class InputManager : MonoBehaviour
     {
     [SerializeField] PlayerMovement movement;
        [SerializeField] PlayerLook mouseLook;
        [SerializeField] PlayerStatsListener stats;
        [SerializeField] PlayerInteract pickUp;
+        [SerializeField] WeaponsManager weaponsManager;
         //[SerializeField] Fire fire;
 
         PlayerInput controls;
@@ -22,6 +24,7 @@ namespace PlayerScripts
         Vector2 mousePosition;
         bool jump;
         bool interact;
+        int currentWeapon;
         /*bool shoot;
         bool holdShoot;*/
 
@@ -32,6 +35,7 @@ namespace PlayerScripts
             stats=GetComponent<PlayerStatsListener>();
 
             pickUp = GetComponent<PlayerInteract>();
+            weaponsManager = GetComponent<WeaponsManager>();
             /*fire = GetComponent<Fire>();*/
 
             controls = new PlayerInput();
@@ -60,11 +64,14 @@ namespace PlayerScripts
         {
             jump = groundMovement.Jump.WasReleasedThisFrame();
             interact = groundMovement.Interact.WasReleasedThisFrame();
+            currentWeapon = SetCurrentWeapon();
             
             movement.ReceiveInput(horizontalInput, jump);
             mouseLook.ReceiveInput(mouseInput);
             stats.ReceiveInput(jump);
             pickUp.ReceiveInput(interact, mousePosition);
+            weaponsManager.ReceiveInput(currentWeapon);
+
 
             /*shoot = groundMovement.Fire.WasReleasedThisFrame();
             holdShoot = groundMovement.Fire.IsPressed();
@@ -72,6 +79,20 @@ namespace PlayerScripts
             
             fire.ReceiveInput(shoot, holdShoot);*/
 
+        }
+
+        private int  SetCurrentWeapon()
+        {
+            int selectedWeapon=currentWeapon;
+
+            if(groundMovement.SelectWeapon1.WasReleasedThisFrame())
+                selectedWeapon = 0;
+            if(groundMovement.SelectWeapon2.WasReleasedThisFrame())
+                selectedWeapon = 1;
+            if(groundMovement.SelectWeapon3.WasReleasedThisFrame())
+                selectedWeapon = 2;
+
+            return selectedWeapon;
         }
 
     }

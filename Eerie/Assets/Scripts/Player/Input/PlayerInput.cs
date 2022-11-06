@@ -82,6 +82,33 @@ namespace PlayerScripts
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Select Weapon 1"",
+                    ""type"": ""Button"",
+                    ""id"": ""6b5c7e67-76a1-48bc-a2b4-2aab4825ec14"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Select Weapon 2"",
+                    ""type"": ""Button"",
+                    ""id"": ""3240f6bd-fa5b-49d4-bc7b-36cf5d0fd6d1"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Select Weapon 3"",
+                    ""type"": ""Button"",
+                    ""id"": ""b17137ae-82d6-4013-92d9-5e881d160ac8"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -335,6 +362,39 @@ namespace PlayerScripts
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""MousePosition"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3e6a87a7-c452-4cfa-a214-ab374b31eb10"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Select Weapon 1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""be054e84-319d-43e0-b4a4-1e959ff27464"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Select Weapon 2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5e2b1541-c38a-498d-918a-92c76ccb70ca"",
+                    ""path"": ""<Keyboard>/3"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Select Weapon 3"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -928,6 +988,9 @@ namespace PlayerScripts
             m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
             m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
             m_Player_MousePosition = m_Player.FindAction("MousePosition", throwIfNotFound: true);
+            m_Player_SelectWeapon1 = m_Player.FindAction("Select Weapon 1", throwIfNotFound: true);
+            m_Player_SelectWeapon2 = m_Player.FindAction("Select Weapon 2", throwIfNotFound: true);
+            m_Player_SelectWeapon3 = m_Player.FindAction("Select Weapon 3", throwIfNotFound: true);
             // UI
             m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
             m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1005,6 +1068,9 @@ namespace PlayerScripts
         private readonly InputAction m_Player_Jump;
         private readonly InputAction m_Player_Interact;
         private readonly InputAction m_Player_MousePosition;
+        private readonly InputAction m_Player_SelectWeapon1;
+        private readonly InputAction m_Player_SelectWeapon2;
+        private readonly InputAction m_Player_SelectWeapon3;
         public struct PlayerActions
         {
             private @PlayerInput m_Wrapper;
@@ -1015,6 +1081,9 @@ namespace PlayerScripts
             public InputAction @Jump => m_Wrapper.m_Player_Jump;
             public InputAction @Interact => m_Wrapper.m_Player_Interact;
             public InputAction @MousePosition => m_Wrapper.m_Player_MousePosition;
+            public InputAction @SelectWeapon1 => m_Wrapper.m_Player_SelectWeapon1;
+            public InputAction @SelectWeapon2 => m_Wrapper.m_Player_SelectWeapon2;
+            public InputAction @SelectWeapon3 => m_Wrapper.m_Player_SelectWeapon3;
             public InputActionMap Get() { return m_Wrapper.m_Player; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -1042,6 +1111,15 @@ namespace PlayerScripts
                     @MousePosition.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMousePosition;
                     @MousePosition.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMousePosition;
                     @MousePosition.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMousePosition;
+                    @SelectWeapon1.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSelectWeapon1;
+                    @SelectWeapon1.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSelectWeapon1;
+                    @SelectWeapon1.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSelectWeapon1;
+                    @SelectWeapon2.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSelectWeapon2;
+                    @SelectWeapon2.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSelectWeapon2;
+                    @SelectWeapon2.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSelectWeapon2;
+                    @SelectWeapon3.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSelectWeapon3;
+                    @SelectWeapon3.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSelectWeapon3;
+                    @SelectWeapon3.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSelectWeapon3;
                 }
                 m_Wrapper.m_PlayerActionsCallbackInterface = instance;
                 if (instance != null)
@@ -1064,6 +1142,15 @@ namespace PlayerScripts
                     @MousePosition.started += instance.OnMousePosition;
                     @MousePosition.performed += instance.OnMousePosition;
                     @MousePosition.canceled += instance.OnMousePosition;
+                    @SelectWeapon1.started += instance.OnSelectWeapon1;
+                    @SelectWeapon1.performed += instance.OnSelectWeapon1;
+                    @SelectWeapon1.canceled += instance.OnSelectWeapon1;
+                    @SelectWeapon2.started += instance.OnSelectWeapon2;
+                    @SelectWeapon2.performed += instance.OnSelectWeapon2;
+                    @SelectWeapon2.canceled += instance.OnSelectWeapon2;
+                    @SelectWeapon3.started += instance.OnSelectWeapon3;
+                    @SelectWeapon3.performed += instance.OnSelectWeapon3;
+                    @SelectWeapon3.canceled += instance.OnSelectWeapon3;
                 }
             }
         }
@@ -1226,6 +1313,9 @@ namespace PlayerScripts
             void OnJump(InputAction.CallbackContext context);
             void OnInteract(InputAction.CallbackContext context);
             void OnMousePosition(InputAction.CallbackContext context);
+            void OnSelectWeapon1(InputAction.CallbackContext context);
+            void OnSelectWeapon2(InputAction.CallbackContext context);
+            void OnSelectWeapon3(InputAction.CallbackContext context);
         }
         public interface IUIActions
         {
