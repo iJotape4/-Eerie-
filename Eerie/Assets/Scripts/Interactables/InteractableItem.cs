@@ -4,7 +4,7 @@ namespace Interactables
 {
     public abstract class InteractableItem : MonoBehaviour, IInteractable
     {
-        protected string ItemTag = "InteractableItem";
+        protected const string ItemTag = "InteractableItem";
         public abstract void Interact();
 
 
