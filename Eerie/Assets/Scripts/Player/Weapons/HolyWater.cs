@@ -7,7 +7,6 @@ namespace  WeaponsScripts
 {
     public class HolyWater : Weapon
     {
-        [SerializeField] private WeaponsManagerScriptableObject weaponsManagerScriptableObject;
             [SerializeField] private WeaponsManager playerweaponsManager;
 
             protected override void AssignAttackEventsListeners() 
