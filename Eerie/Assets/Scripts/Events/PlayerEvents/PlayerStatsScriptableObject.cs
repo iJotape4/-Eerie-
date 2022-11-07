@@ -174,8 +174,6 @@ namespace GameEvents
             maxEquipmentWeightChangeEvent?.Invoke(maxEquipmentWeight);
         } 
 
-
-
         public void WeaponPicked(float[] stats)
         {
             IncreaseHealth(stats[0]);

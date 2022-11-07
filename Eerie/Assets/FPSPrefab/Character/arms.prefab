@@ -1396,6 +1396,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5449280597207485883}
   - component: {fileID: 2125583577017407425}
+  - component: {fileID: 3363805446848889339}
   m_Layer: 7
   m_Name: arms
   m_TagString: Arms
@@ -1445,6 +1446,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &3363805446848889339
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4671476878765938433}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b678843111542f4b859658cad445de3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5172870077257183852
 GameObject:
   m_ObjectHideFlags: 0
