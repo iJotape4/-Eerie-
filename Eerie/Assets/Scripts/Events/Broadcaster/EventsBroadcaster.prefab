@@ -46,3 +46,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerEvents: {fileID: 11400000, guid: 92ee8681bc75fe546bffd52c4546f75e, type: 2}
   gameStateEvents: {fileID: 11400000, guid: 1a6e8c20268b023479eeed85eae91e4d, type: 2}
+  uiEvents: {fileID: 11400000, guid: f36170bb26df1a14384151921c9e18c2, type: 2}
+  interactionsEvents: {fileID: 11400000, guid: 2b78f357fa44e794e8f518975f9c3ddb, type: 2}
