@@ -18,6 +18,8 @@ namespace GameEvents
             interactionsEvents.holyWaterPickedEvent += WeaponPicked;
             interactionsEvents.bootsPickedEvent += WeaponPicked;
             interactionsEvents.boomerangPickedEvent += WeaponPicked;
+            interactionsEvents.shirtPickedEvent += WeaponPicked;
+            interactionsEvents.pantsPickedEvent += WeaponPicked;
         }
 
         void CallGameOver()
