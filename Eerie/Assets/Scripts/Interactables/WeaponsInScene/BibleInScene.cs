@@ -18,6 +18,7 @@ namespace Interactables
         public override void Pick()
         {
             TurnShowItemOnScene(false);
+            interactableEventsScriptableObject.PickBible(weaponType.GetStatsValues());
         }
 
         public override void Respawn()=>       

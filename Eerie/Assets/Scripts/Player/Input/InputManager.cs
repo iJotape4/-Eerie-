@@ -6,13 +6,16 @@ namespace PlayerScripts
     [RequireComponent(typeof(PlayerLook))]
     [RequireComponent(typeof(PlayerStatsListener))]
     [RequireComponent(typeof(PlayerInteract))]
+    [RequireComponent(typeof(WeaponsManager))]
+    [RequireComponent(typeof(PlayerAttack))]
     public class InputManager : MonoBehaviour
     {
-    [SerializeField] PlayerMovement movement;
-       [SerializeField] PlayerLook mouseLook;
-       [SerializeField] PlayerStatsListener stats;
-       [SerializeField] PlayerInteract pickUp;
-        //[SerializeField] Fire fire;
+        [SerializeField] PlayerMovement movement;
+        [SerializeField] PlayerLook mouseLook;
+        [SerializeField] PlayerStatsListener stats;
+        [SerializeField] PlayerInteract pickUp;
+        [SerializeField] WeaponsManager weaponsManager;
+        [SerializeField] PlayerAttack playerAttack;
 
         PlayerInput controls;
         PlayerInput.PlayerActions groundMovement;
@@ -22,8 +25,9 @@ namespace PlayerScripts
         Vector2 mousePosition;
         bool jump;
         bool interact;
-        /*bool shoot;
-        bool holdShoot;*/
+        WeaponsList currentWeapon;
+        bool fire1, holdFire1, fire2, holdFire2;
+        
 
         private void Awake() 
         {
@@ -32,7 +36,8 @@ namespace PlayerScripts
             stats=GetComponent<PlayerStatsListener>();
 
             pickUp = GetComponent<PlayerInteract>();
-            /*fire = GetComponent<Fire>();*/
+            weaponsManager = GetComponent<WeaponsManager>();
+            playerAttack = GetComponent<PlayerAttack>();
 
             controls = new PlayerInput();
             groundMovement = controls.Player;
@@ -42,8 +47,6 @@ namespace PlayerScripts
             groundMovement.Look.performed += ctx => mouseInput = ctx.ReadValue<Vector2>();
 
             groundMovement.MousePosition.performed += ctx => mousePosition = ctx.ReadValue<Vector2>();
-            
-            //groundMovement.Look.performed += ctx => mouseInput.y = ctx.ReadValue<float>();
         }
 
         private void OnEnable() 
@@ -60,18 +63,32 @@ namespace PlayerScripts
         {
             jump = groundMovement.Jump.WasReleasedThisFrame();
             interact = groundMovement.Interact.WasReleasedThisFrame();
+            currentWeapon = SetCurrentWeapon();
+            fire1= groundMovement.Fire1.WasReleasedThisFrame();
+            holdFire1 = groundMovement.Fire1.IsPressed();
+            fire2= groundMovement.Fire2.WasReleasedThisFrame();
+            holdFire2 = groundMovement.Fire2.IsPressed();
             
             movement.ReceiveInput(horizontalInput, jump);
             mouseLook.ReceiveInput(mouseInput);
             stats.ReceiveInput(jump);
             pickUp.ReceiveInput(interact, mousePosition);
+            weaponsManager.ReceiveInput(currentWeapon);
+            playerAttack.ReceiveInput(fire1, holdFire1, fire2, holdFire2);
+        }
 
-            /*shoot = groundMovement.Fire.WasReleasedThisFrame();
-            holdShoot = groundMovement.Fire.IsPressed();
+        private WeaponsList  SetCurrentWeapon()
+        {
+            WeaponsList selectedWeapon=currentWeapon;
 
-            
-            fire.ReceiveInput(shoot, holdShoot);*/
+            if(groundMovement.SelectWeapon1.WasReleasedThisFrame())
+                selectedWeapon = WeaponsList.Barehand;
+            if(groundMovement.SelectWeapon2.WasReleasedThisFrame())
+                selectedWeapon = WeaponsList.Bible;
+            if(groundMovement.SelectWeapon3.WasReleasedThisFrame())
+                selectedWeapon = WeaponsList.HolyWater;
 
+            return selectedWeapon;
         }
 
     }

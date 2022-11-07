@@ -7,11 +7,17 @@ namespace GameEvents
         public PlayerStatsScriptableObject playerEvents;
         public GameManagerScriptableObject gameStateEvents;
         public UIManagerScriptableObject uiEvents;
+        public InteractableEventsScriptableObject interactionsEvents;
 
         private void Start() 
         {
             playerEvents.deathEvent += CallGameOver;
             playerEvents.interactableFoundEvent += ActivatePressEIcon;
+
+            interactionsEvents.biblePickedEvent += WeaponPicked;
+            interactionsEvents.holyWaterPickedEvent += WeaponPicked;
+            interactionsEvents.bootsPickedEvent += WeaponPicked;
+            interactionsEvents.boomerangPickedEvent += WeaponPicked;
         }
 
         void CallGameOver()
@@ -29,6 +35,11 @@ namespace GameEvents
             {
                 uiEvents.DeactivatePressEIcon();
             }
+        }
+
+        void WeaponPicked(float[] stats)
+        {
+            playerEvents.WeaponPicked(stats);
         }
 
 

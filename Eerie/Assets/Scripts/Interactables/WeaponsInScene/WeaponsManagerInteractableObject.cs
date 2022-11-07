@@ -4,9 +4,6 @@ using UnityEngine.Events;
 [CreateAssetMenu(fileName = "PlayerWeaponScriptableObject", menuName ="ScriptableObjects/PlayerWeaponsManager")]
 public class PlayerWeaponsManagerScriptableObject : ScriptableObject
 {
-    public string magneticWeapon = "MagneticWeapon";
-    public string parabolicWeapon = "ParabolicWeapon";
-    public string boomerangWeapon = "BoomerangWeapon";
     public string currentWeapon;
 
    /* public WeaponParabolicScriptableObject parabolicScriptableObject;

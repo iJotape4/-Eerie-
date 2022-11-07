@@ -48,9 +48,18 @@ namespace PlayerScripts
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""Fire"",
+                    ""name"": ""Fire1"",
                     ""type"": ""Button"",
                     ""id"": ""1b6b4c04-3089-48a6-b883-9deee387cfca"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Fire2"",
+                    ""type"": ""Button"",
+                    ""id"": ""26033fb4-969c-4532-aa49-d72579e4f22a"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -82,6 +91,33 @@ namespace PlayerScripts
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Select Weapon 1"",
+                    ""type"": ""Button"",
+                    ""id"": ""6b5c7e67-76a1-48bc-a2b4-2aab4825ec14"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Select Weapon 2"",
+                    ""type"": ""Button"",
+                    ""id"": ""3240f6bd-fa5b-49d4-bc7b-36cf5d0fd6d1"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Select Weapon 3"",
+                    ""type"": ""Button"",
+                    ""id"": ""b17137ae-82d6-4013-92d9-5e881d160ac8"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -257,7 +293,7 @@ namespace PlayerScripts
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";Gamepad"",
-                    ""action"": ""Fire"",
+                    ""action"": ""Fire1"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -268,7 +304,7 @@ namespace PlayerScripts
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";Keyboard&Mouse"",
-                    ""action"": ""Fire"",
+                    ""action"": ""Fire1"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -279,7 +315,7 @@ namespace PlayerScripts
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";Touch"",
-                    ""action"": ""Fire"",
+                    ""action"": ""Fire1"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -290,7 +326,7 @@ namespace PlayerScripts
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Joystick"",
-                    ""action"": ""Fire"",
+                    ""action"": ""Fire1"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -301,7 +337,7 @@ namespace PlayerScripts
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""XR"",
-                    ""action"": ""Fire"",
+                    ""action"": ""Fire1"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -335,6 +371,61 @@ namespace PlayerScripts
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""MousePosition"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3e6a87a7-c452-4cfa-a214-ab374b31eb10"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Select Weapon 1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""be054e84-319d-43e0-b4a4-1e959ff27464"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Select Weapon 2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5e2b1541-c38a-498d-918a-92c76ccb70ca"",
+                    ""path"": ""<Keyboard>/3"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Select Weapon 3"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""019f1cd5-4581-4c6e-8e9b-1ff598e2aa1b"",
+                    ""path"": ""<Gamepad>/leftTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Fire2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9dd7c9b4-9206-4d94-bf23-5d29d0b31dbc"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Fire2"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -924,10 +1015,14 @@ namespace PlayerScripts
             m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
             m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
             m_Player_Look = m_Player.FindAction("Look", throwIfNotFound: true);
-            m_Player_Fire = m_Player.FindAction("Fire", throwIfNotFound: true);
+            m_Player_Fire1 = m_Player.FindAction("Fire1", throwIfNotFound: true);
+            m_Player_Fire2 = m_Player.FindAction("Fire2", throwIfNotFound: true);
             m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
             m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
             m_Player_MousePosition = m_Player.FindAction("MousePosition", throwIfNotFound: true);
+            m_Player_SelectWeapon1 = m_Player.FindAction("Select Weapon 1", throwIfNotFound: true);
+            m_Player_SelectWeapon2 = m_Player.FindAction("Select Weapon 2", throwIfNotFound: true);
+            m_Player_SelectWeapon3 = m_Player.FindAction("Select Weapon 3", throwIfNotFound: true);
             // UI
             m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
             m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1001,20 +1096,28 @@ namespace PlayerScripts
         private IPlayerActions m_PlayerActionsCallbackInterface;
         private readonly InputAction m_Player_Move;
         private readonly InputAction m_Player_Look;
-        private readonly InputAction m_Player_Fire;
+        private readonly InputAction m_Player_Fire1;
+        private readonly InputAction m_Player_Fire2;
         private readonly InputAction m_Player_Jump;
         private readonly InputAction m_Player_Interact;
         private readonly InputAction m_Player_MousePosition;
+        private readonly InputAction m_Player_SelectWeapon1;
+        private readonly InputAction m_Player_SelectWeapon2;
+        private readonly InputAction m_Player_SelectWeapon3;
         public struct PlayerActions
         {
             private @PlayerInput m_Wrapper;
             public PlayerActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
             public InputAction @Move => m_Wrapper.m_Player_Move;
             public InputAction @Look => m_Wrapper.m_Player_Look;
-            public InputAction @Fire => m_Wrapper.m_Player_Fire;
+            public InputAction @Fire1 => m_Wrapper.m_Player_Fire1;
+            public InputAction @Fire2 => m_Wrapper.m_Player_Fire2;
             public InputAction @Jump => m_Wrapper.m_Player_Jump;
             public InputAction @Interact => m_Wrapper.m_Player_Interact;
             public InputAction @MousePosition => m_Wrapper.m_Player_MousePosition;
+            public InputAction @SelectWeapon1 => m_Wrapper.m_Player_SelectWeapon1;
+            public InputAction @SelectWeapon2 => m_Wrapper.m_Player_SelectWeapon2;
+            public InputAction @SelectWeapon3 => m_Wrapper.m_Player_SelectWeapon3;
             public InputActionMap Get() { return m_Wrapper.m_Player; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -1030,9 +1133,12 @@ namespace PlayerScripts
                     @Look.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLook;
                     @Look.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLook;
                     @Look.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLook;
-                    @Fire.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFire;
-                    @Fire.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFire;
-                    @Fire.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFire;
+                    @Fire1.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFire1;
+                    @Fire1.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFire1;
+                    @Fire1.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFire1;
+                    @Fire2.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFire2;
+                    @Fire2.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFire2;
+                    @Fire2.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFire2;
                     @Jump.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJump;
                     @Jump.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJump;
                     @Jump.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJump;
@@ -1042,6 +1148,15 @@ namespace PlayerScripts
                     @MousePosition.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMousePosition;
                     @MousePosition.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMousePosition;
                     @MousePosition.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMousePosition;
+                    @SelectWeapon1.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSelectWeapon1;
+                    @SelectWeapon1.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSelectWeapon1;
+                    @SelectWeapon1.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSelectWeapon1;
+                    @SelectWeapon2.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSelectWeapon2;
+                    @SelectWeapon2.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSelectWeapon2;
+                    @SelectWeapon2.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSelectWeapon2;
+                    @SelectWeapon3.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSelectWeapon3;
+                    @SelectWeapon3.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSelectWeapon3;
+                    @SelectWeapon3.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSelectWeapon3;
                 }
                 m_Wrapper.m_PlayerActionsCallbackInterface = instance;
                 if (instance != null)
@@ -1052,9 +1167,12 @@ namespace PlayerScripts
                     @Look.started += instance.OnLook;
                     @Look.performed += instance.OnLook;
                     @Look.canceled += instance.OnLook;
-                    @Fire.started += instance.OnFire;
-                    @Fire.performed += instance.OnFire;
-                    @Fire.canceled += instance.OnFire;
+                    @Fire1.started += instance.OnFire1;
+                    @Fire1.performed += instance.OnFire1;
+                    @Fire1.canceled += instance.OnFire1;
+                    @Fire2.started += instance.OnFire2;
+                    @Fire2.performed += instance.OnFire2;
+                    @Fire2.canceled += instance.OnFire2;
                     @Jump.started += instance.OnJump;
                     @Jump.performed += instance.OnJump;
                     @Jump.canceled += instance.OnJump;
@@ -1064,6 +1182,15 @@ namespace PlayerScripts
                     @MousePosition.started += instance.OnMousePosition;
                     @MousePosition.performed += instance.OnMousePosition;
                     @MousePosition.canceled += instance.OnMousePosition;
+                    @SelectWeapon1.started += instance.OnSelectWeapon1;
+                    @SelectWeapon1.performed += instance.OnSelectWeapon1;
+                    @SelectWeapon1.canceled += instance.OnSelectWeapon1;
+                    @SelectWeapon2.started += instance.OnSelectWeapon2;
+                    @SelectWeapon2.performed += instance.OnSelectWeapon2;
+                    @SelectWeapon2.canceled += instance.OnSelectWeapon2;
+                    @SelectWeapon3.started += instance.OnSelectWeapon3;
+                    @SelectWeapon3.performed += instance.OnSelectWeapon3;
+                    @SelectWeapon3.canceled += instance.OnSelectWeapon3;
                 }
             }
         }
@@ -1222,10 +1349,14 @@ namespace PlayerScripts
         {
             void OnMove(InputAction.CallbackContext context);
             void OnLook(InputAction.CallbackContext context);
-            void OnFire(InputAction.CallbackContext context);
+            void OnFire1(InputAction.CallbackContext context);
+            void OnFire2(InputAction.CallbackContext context);
             void OnJump(InputAction.CallbackContext context);
             void OnInteract(InputAction.CallbackContext context);
             void OnMousePosition(InputAction.CallbackContext context);
+            void OnSelectWeapon1(InputAction.CallbackContext context);
+            void OnSelectWeapon2(InputAction.CallbackContext context);
+            void OnSelectWeapon3(InputAction.CallbackContext context);
         }
         public interface IUIActions
         {
