@@ -25,12 +25,17 @@ namespace PlayerScripts
 
 		[SerializeField] public bool _inBiblioomerang;
         
-        private void Start() 
-        {
+        private void Awake() 
+        {            
             FindArmsAnimator();
             UpdateWeaponsList();
             HideWeapons();
         }
+
+
+        private void Start()=>         
+            SetCurrentWeapon(((int)WeaponsList.Barehand));
+        
         protected void FindArmsAnimator()=>
             _anim = GameObject.FindGameObjectWithTag("Arms").GetComponent<Animator>();
 
@@ -47,6 +52,8 @@ namespace PlayerScripts
         {
             currentWeapon =weapons[index];
             _anim.SetInteger(_animCurrentWeaponInt, index);
+            currentWeapon.SetActive(true);
+            _currentWeaponIndex = (WeaponsList)index;
         }      
 
 
@@ -55,11 +62,8 @@ namespace PlayerScripts
                 StartCoroutine(AnimatorTriggersController(_animChangeWeaponTrigger));
                 
                 yield return new WaitForSeconds(1f);
-                currentWeapon.SetActive(false);
-                currentWeapon = weapons[index];
-                currentWeapon.SetActive(true);
-                _currentWeaponIndex = (WeaponsList)index;
-                SetCurrentWeapon(((int)_currentWeaponIndex));             
+                currentWeapon.SetActive(false);               
+                SetCurrentWeapon(index);             
             }
 
         public void CallAttackAnimationTrigger(string animatorTrigger)=>
