@@ -684,6 +684,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -0.0000039814704
       objectReference: {fileID: 0}
+    - target: {fileID: 3363805446848889339, guid: cfeed0d528dcfae4a9874bfa419960f3,
+        type: 3}
+      propertyPath: _bottleCap
+      value: 
+      objectReference: {fileID: 637634555022691367}
     - target: {fileID: 3870445415044573570, guid: cfeed0d528dcfae4a9874bfa419960f3,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1164,6 +1169,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -83.11295
       objectReference: {fileID: 0}
+    - target: {fileID: 9172095241842148075, guid: cfeed0d528dcfae4a9874bfa419960f3,
+        type: 3}
+      propertyPath: playerweaponsManager
+      value: 
+      objectReference: {fileID: 2287245948754391927}
     m_RemovedComponents:
     - {fileID: 5907431629545993146, guid: cfeed0d528dcfae4a9874bfa419960f3, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: cfeed0d528dcfae4a9874bfa419960f3, type: 3}
@@ -1193,6 +1203,12 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
+--- !u!4 &637634555022691367 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8841209799883823609, guid: cfeed0d528dcfae4a9874bfa419960f3,
+    type: 3}
+  m_PrefabInstance: {fileID: 8244714637294261726}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2536114797274227537 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5861728205979203215, guid: cfeed0d528dcfae4a9874bfa419960f3,
