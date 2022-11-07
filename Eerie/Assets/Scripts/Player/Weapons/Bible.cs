@@ -10,9 +10,9 @@ namespace WeaponsScripts
         [SerializeField] private WeaponsManagerScriptableObject weaponsManagerScriptableObject;
         [SerializeField] private WeaponsManager playerweaponsManager;
 
-        private void Start() 
+        protected override void AssignAttackEventsListeners() 
         {
-             weaponsManagerScriptableObject.playerAttack1Event += PrimaryAttack;
+            weaponsManagerScriptableObject.playerAttack1Event += PrimaryAttack;
             weaponsManagerScriptableObject.playerAttack2Event += SecondaryAttack;
         }
         //Bible Hit Attack
@@ -20,7 +20,8 @@ namespace WeaponsScripts
         {
             if(playerweaponsManager._currentWeaponIndex != WeaponsList.Bible)
                 return;
-                StartCoroutine(BibleHit());
+                
+            StartCoroutine(BibleHit());
         }
 
         //Biblioomerang Attack

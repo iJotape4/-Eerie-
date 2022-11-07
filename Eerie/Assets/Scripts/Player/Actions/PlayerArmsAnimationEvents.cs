@@ -4,12 +4,16 @@ using UnityEngine;
 
 public class PlayerArmsAnimationEvents : MonoBehaviour
 {
-    [SerializeField] Animator _anim;
+    [SerializeField] private Rigidbody _waterRB;
+    [SerializeField] private Transform _bottleCap;
+    [SerializeField] private GameObject _smartWatch;
+    [SerializeField] private GameObject _player;
 
-    private void Start() 
-    {
-        _anim = GetComponent<Animator>();
-    }
+    [SerializeField] private float shotForce = 2000f;
+
+    private void Awake()=>
+     _player = GameObject.FindGameObjectWithTag("Player");     
+
 
     public void EnableBibleCollider()
     {
@@ -21,8 +25,14 @@ public class PlayerArmsAnimationEvents : MonoBehaviour
     }
 
     public void LaunchWater()
-    {
+    {      
+        _waterRB = Resources.Load<GameObject>("WaterJet").GetComponent<Rigidbody>();
+        if(_waterRB==null)
+            return;
 
+        Rigidbody _waterInstance;
+        _waterInstance = Instantiate(_waterRB, _bottleCap.position, _bottleCap.rotation) as Rigidbody;
+        _waterInstance.AddForce(_bottleCap.forward * shotForce);
     }
 
     public void SmartWatch()
