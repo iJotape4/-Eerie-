@@ -11492,6 +11492,11 @@ PrefabInstance:
       propertyPath: playerweaponsManager
       value: 
       objectReference: {fileID: 1337970172}
+    - target: {fileID: 1977802181225333589, guid: 0272f7900db008a4d8832c1ccf64986c,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2247413418302323410, guid: 0272f7900db008a4d8832c1ccf64986c,
         type: 3}
       propertyPath: m_IsActive
@@ -11572,5 +11577,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 8482926444905473850, guid: 0272f7900db008a4d8832c1ccf64986c,
+        type: 3}
+      propertyPath: playerweaponsManager
+      value: 
+      objectReference: {fileID: 1337970172}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0272f7900db008a4d8832c1ccf64986c, type: 3}

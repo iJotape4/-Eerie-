@@ -13,9 +13,12 @@ MonoBehaviour:
   m_Name: Player Stats
   m_EditorClassIdentifier: 
   health: 100
-  maxHealth: 100
-  mana: 0
+  maxHealth: 150
+  mana: 95
   maxMana: 100
-  damage: 1
-  armor: 0
-  magicalDamage: 1
+  speed: 6
+  damage: 41
+  armor: 3
+  magicalDamage: 14
+  equipmentWeight: 9
+  maxEquipmentWeight: 100
