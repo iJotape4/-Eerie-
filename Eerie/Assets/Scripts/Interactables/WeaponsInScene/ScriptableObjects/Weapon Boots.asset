@@ -22,6 +22,7 @@ MonoBehaviour:
   _damage: 0
   _armor: 0
   _magicalDamage: 0
-  weight: 0
+  _weight: 1
+  _maxEquipmentWeight: 0
   shotForce: 0
   range: 0

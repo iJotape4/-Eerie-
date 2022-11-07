@@ -19,6 +19,12 @@ namespace GameEvents
         [System.NonSerialized] public UnityAction<float[]> bootsPickedEvent;
         [System.NonSerialized] public UnityAction<float[]>  leftBoots;
 
+        [System.NonSerialized] public UnityAction<float[]> shirtPickedEvent;
+        [System.NonSerialized] public UnityAction<float[]>  leftShirt;
+
+        [System.NonSerialized] public UnityAction<float[]> pantsPickedEvent;
+        [System.NonSerialized] public UnityAction<float[]>  leftPants;
+
         [System.NonSerialized] public UnityAction yellowCardPickedEvent;
         [System.NonSerialized] public UnityAction pinkCardPickedEvent;
 
@@ -34,7 +40,13 @@ namespace GameEvents
         public void LeftBoomerang(float[] stats)=> leftBoomerang?.Invoke(stats);
 
         public void PickBoots(float[] stats)=> bootsPickedEvent?.Invoke(stats);      
-        public void LeftBoots(float[] stats)=> leftBoots?.Invoke(stats);      
+        public void LeftBoots(float[] stats)=> leftBoots?.Invoke(stats);  
+
+        public void PickShirt(float[] stats)=> shirtPickedEvent?.Invoke(stats);      
+        public void LeftShirt(float[] stats)=> leftShirt?.Invoke(stats);  
+
+        public void PickPants(float[] stats)=> pantsPickedEvent?.Invoke(stats);      
+        public void LeftPants(float[] stats)=> leftPants?.Invoke(stats);        
 
         public void PickYellowCard()=> yellowCardPickedEvent?.Invoke(); 
         public void PickPinkCard()=> pinkCardPickedEvent?.Invoke(); 
