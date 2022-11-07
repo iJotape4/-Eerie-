@@ -172,7 +172,12 @@ namespace GameEvents
         {           
             maxEquipmentWeight -= amount;
             maxEquipmentWeightChangeEvent?.Invoke(maxEquipmentWeight);
-        } 
+        }
+
+        public float GetCurrentMana()
+        {
+            return mana; 
+        }
 
         public void WeaponPicked(float[] stats)
         {
