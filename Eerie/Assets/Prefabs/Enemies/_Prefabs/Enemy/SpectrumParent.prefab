@@ -2548,9 +2548,9 @@ GameObject:
   - component: {fileID: 9189875453627478712}
   - component: {fileID: 2983867696907675842}
   - component: {fileID: 2983867696907675843}
-  - component: {fileID: 5684961083216931916}
   - component: {fileID: 2363221156881074409}
   - component: {fileID: 9046851827257089041}
+  - component: {fileID: 2876802218506007347}
   m_Layer: 1
   m_Name: Spectrum
   m_TagString: Enemy
@@ -2611,25 +2611,6 @@ CapsuleCollider:
   m_Height: 1.3455601
   m_Direction: 1
   m_Center: {x: 0, y: 0.6108389, z: -0.057102203}
---- !u!114 &5684961083216931916
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8413620912112035842}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8415dcd83d9a2a043a4c9044a8d81288, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _playerTarget: {fileID: 0}
-  _spawnPoint: {fileID: 0}
-  _blueFire: {fileID: 0}
-  capsuleCollider: {fileID: 0}
-  _anim: {fileID: 0}
-  shotCadency: 15
-  shotForce: 10
 --- !u!54 &2363221156881074409
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2742,6 +2723,30 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &2876802218506007347
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8413620912112035842}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 501362e1c9b16a0428e177ca2a9103d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _health: 100
+  _maxHealt: 100
+  _armor: 0
+  _damage: 10
+  anim: {fileID: 0}
+  _playerTarget: {fileID: 0}
+  _spawnPoint: {fileID: 0}
+  _blueFire: {fileID: 0}
+  capsuleCollider: {fileID: 0}
+  shotCadency: 15
+  counter: 0
+  shotForce: 15
 --- !u!1 &8431180790796570884
 GameObject:
   m_ObjectHideFlags: 0
