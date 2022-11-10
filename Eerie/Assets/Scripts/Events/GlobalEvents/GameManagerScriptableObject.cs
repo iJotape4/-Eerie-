@@ -26,8 +26,8 @@ namespace GameEvents
          public void Lose()
         {
             gameState = GameState.death;
-            Debug.Log("GAME OVER");
             gameStateChangeEvent?.Invoke(gameState);
+            Time.timeScale =0f;
         }
         
         protected enum GameState 

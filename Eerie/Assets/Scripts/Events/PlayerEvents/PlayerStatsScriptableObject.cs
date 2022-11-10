@@ -34,6 +34,7 @@ namespace GameEvents
         [System.NonSerialized] public UnityAction deathEvent;
         [System.NonSerialized] public UnityAction<bool> interactableFoundEvent;
         [System.NonSerialized] public UnityAction itemPickedEvent;
+        [System.NonSerialized] public UnityAction damageReceivedEvent;
 
         private void OnEnable()
         {
@@ -169,7 +170,7 @@ namespace GameEvents
         }
 
         public void DecreaseMaxEquipmentWeight(float amount) 
-        {           
+        {            
             maxEquipmentWeight -= amount;
             maxEquipmentWeightChangeEvent?.Invoke(maxEquipmentWeight);
         }

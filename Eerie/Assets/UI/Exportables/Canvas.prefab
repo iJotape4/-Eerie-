@@ -943,7 +943,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &6107803431753176800
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4535,6 +4535,8 @@ GameObject:
   - component: {fileID: 5542037739072199619}
   - component: {fileID: 1397009892}
   - component: {fileID: 1397009897}
+  - component: {fileID: 2220797437234781532}
+  - component: {fileID: 9144228950823727387}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -4662,6 +4664,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uiManagerScriptableObject: {fileID: 11400000, guid: f36170bb26df1a14384151921c9e18c2,
     type: 2}
+--- !u!114 &2220797437234781532
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5542037739072199618}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9321831076399a54da923752154c8214, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DamageImage: {fileID: 5542037737944639904}
+--- !u!114 &9144228950823727387
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5542037739072199618}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9eb24ab04959ed9429c3ea8b5d01a32b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameOverImage: {fileID: 8225636852891594967}
 --- !u!1 &5542037739091925709
 GameObject:
   m_ObjectHideFlags: 0
@@ -4850,7 +4878,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &5542037739305082303
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5289,7 +5317,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &3419975079509572963
 RectTransform:
   m_ObjectHideFlags: 0
