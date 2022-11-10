@@ -7,7 +7,8 @@ namespace GameEvents
     public class UIManagerScriptableObject : ScriptableObject 
     {
         public UnityAction<bool> togglePressEIconEvent; 
-        public UnityAction displayDamageFlashEvent;        
+        public UnityAction displayDamageFlashEvent;       
+        public UnityAction displayGameOverEvent; 
 
         public void ActivatePressEIcon()=>
         togglePressEIconEvent?.Invoke(true);
@@ -16,7 +17,10 @@ namespace GameEvents
         togglePressEIconEvent?.Invoke(false);
 
         public void DisplayDamageFlash()=>
-        displayDamageFlashEvent.Invoke();
+        displayDamageFlashEvent?.Invoke();
+
+        public void DisplayGameOver()=>
+        displayGameOverEvent?.Invoke();
         
     }
 }
