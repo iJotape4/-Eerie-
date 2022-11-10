@@ -3,11 +3,13 @@ using System.Collections;
 
 namespace Enemies
 {
+    [RequireComponent(typeof(EnemyDispeler))]
     public class Zombie : PatrollerEnemy, IPlayerFollower, IStuneable, IMortalGameActor, IDispelable, IDamageable, IAttackWithHands
     {
         [SerializeField] private bool _stunned;
         [SerializeField] private bool _hitted;
         [SerializeField] private bool _canPursuit = true;
+        [SerializeField] protected bool _zombieRunner = false;
 
         [SerializeField, Range(0.5f, 3f)] private float _attackzone = 1.2f;
         [SerializeField, Range(0.5f, 3f)] private float pushForce;
@@ -22,6 +24,7 @@ namespace Enemies
 
         protected string animZombieIdle = "Anim_ZombieIdle";
         protected string animZombieWalk = "Anim_ZombieWalk";
+        protected string animZombieRun = "Anim_ZombieRun";
         protected string[] animZombieAttacks = 
         { 
         "Anim_ZombieAttack", 
@@ -52,19 +55,33 @@ namespace Enemies
 
         public void Update()
         {
+            if (_health<=0)
+            {
+                CallDeath(); 
+                return;
+            }          
+            
             Walk();
-        }
+            anim.SetBool(_animStunnedBool, _stunned);
+            anim.SetBool(_animRunnerZombieBool, _zombieRunner); 
+            _speed = anim.GetCurrentAnimatorStateInfo(0).IsName(animZombieRun)? _runSpeed : _walkSpeed;        
+        }     
+        
 
        public override void Walk()
        {
-           if(DetectPlayer() && _canPursuit)
+           if(DetectPlayer())
             {                
                 anim.SetBool(_animPlayerDetectedBool, true);
-                FollowPlayer();
+                
+                if(_canPursuit)
+                    FollowPlayer();
             }
             else
             {
-                anim.SetBool(_animAttackZoneBool, false);
+                //Restores zombie Walking
+                anim.SetBool(_animPlayerDetectedBool, false);
+                AttackWithHands(false);
                 Patrol();
             }
        }
@@ -131,11 +148,11 @@ namespace Enemies
 
             if(Vector3.Distance(transform.position, selection.position) < _attackzone)
             {
-                anim.SetBool(_animAttackZoneBool, true);
+                AttackWithHands(true);
             }
             else
             {
-                anim.SetBool(_animAttackZoneBool, false);
+                AttackWithHands(false);
             }
 
             foreach (string animation in animZombieAttacks)
@@ -148,41 +165,84 @@ namespace Enemies
             //Move Towards Player
             transform.position = Vector3.MoveTowards(transform.position, selection.transform.position, _speed * Time.deltaTime);
             transform.LookAt(selection.transform.position);
+    
+           if (_zombieRunner)
+            {
+                _speed = _runSpeed;
+            }
+            else
+            {
+                _speed = _walkSpeed;
+            }
        }
 
-       public void AttackWithHands()
+       public void AttackWithHands(bool performAttack)
        {
-
+            anim.SetBool(_animAttackZoneBool, performAttack);
        }
-       
+       //This Method Is Triggered OnCollisionEnter
        public void ReceiveStun()
        {
-
+            ChangeHealth(_health -= 10);
+            _stunned = true;
+            _canPursuit = false;
        }
 
+        //This Method Is triggered by animation event on :
+        //-> Agonizing Animation Last Frames
+        //-> Reaction Animation Last Frames
        public void StunEnds()
        {
-
+            _stunned = false;
+            _canPursuit = true;
        }
 
        public void CallDeath()
        {
-
+            _stunned = false;
+            _canPursuit = false;
+            foreach (CapsuleCollider col in GetComponentsInChildren<CapsuleCollider>())          
+                col.enabled = false;
+            
+            anim.SetTrigger(_animDeathTrigger);
        }
 
-       public void OnDeath()
-       {
-
-       }
+       public void OnDeath()=>
+        Dispel();
 
        public void Dispel()
        {
-
+           foreach (EnemyDispeler ED in GetComponentsInChildren<EnemyDispeler>())       
+               ED.UpdateMaterialsArray();      
        }
 
-       public void  ChangeHealth( float newHealth)
-       {
+        //This Method is triggered OnCollisionEnter
+       public void  ChangeHealth(float newHealth)=>     
+            _health = newHealth;
+       
 
-       }
+        private void OnCollisionEnter(Collision collision)
+        {
+            if(collision.gameObject.tag == "HolyWater")
+            {
+                ReceiveStun();
+                Destroy(collision.gameObject);
+            }
+            if (collision.gameObject.tag == "Weapon" ||  collision.gameObject.tag == "Projectile")
+            {
+                _hitted = true;
+                _canPursuit = false;
+                ChangeHealth(_health -= 10);              
+            }
+        }
+
+        private void OnCollisionExit(Collision collision)
+        {
+            if (collision.gameObject.tag == "Weapon" || collision.gameObject.tag == "Projectile")  
+            {
+                _hitted = false;
+                anim.SetTrigger(_animHittedTrigger);          
+            }
+        }
     }
 }

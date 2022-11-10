@@ -1,4 +1,4 @@
 public interface IAttackWithHands
 {
-    public void AttackWithHands();
+    public void AttackWithHands(bool performAttack);
 }

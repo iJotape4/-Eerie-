@@ -1774,7 +1774,8 @@ GameObject:
   - component: {fileID: 6693869058653302726}
   - component: {fileID: 3933482781812060113}
   - component: {fileID: 6231889365370823496}
-  m_Layer: 10
+  - component: {fileID: 228422828397847285}
+  m_Layer: 6
   m_Name: Zombie
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -1831,7 +1832,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7719988747883350613}
   serializedVersion: 2
-  m_Mass: 500
+  m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0
   m_UseGravity: 0
@@ -1874,12 +1875,27 @@ MonoBehaviour:
   currentPatrolPoint: 0
   _range: 20
   _speed: 1
+  _walkSpeed: 1
+  _runSpeed: 5
   _stunned: 0
   _hitted: 0
   _canPursuit: 1
-  _attackzone: 1.2
+  _zombieRunner: 0
+  _attackzone: 1.5
   pushForce: 0
   meshRenderers: []
+--- !u!114 &228422828397847285
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7719988747883350613}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75daf2ad39a980643bfb6d26fb94b581, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7980050844157049020
 GameObject:
   m_ObjectHideFlags: 0

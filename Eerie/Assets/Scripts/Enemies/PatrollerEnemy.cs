@@ -9,6 +9,8 @@ namespace Enemies
         [SerializeField] protected int currentPatrolPoint = 0;
         [SerializeField, Range(1f,20f)] public float _range = 20f;
         [SerializeField, Range(1f,20f)] public float _speed = 1f;
+        [SerializeField, Range(1f,20f)] public float _walkSpeed = 1f;
+        [SerializeField, Range(1f,20f)] public float _runSpeed = 5f;
 
         //Animation Params
         protected string _animPatrollingBool = "Patrolling";
