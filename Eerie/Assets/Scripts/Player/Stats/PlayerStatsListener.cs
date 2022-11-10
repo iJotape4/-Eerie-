@@ -1,5 +1,6 @@
-    using UnityEngine;
+using UnityEngine;
 using GameEvents;
+using Enemies;
 
 namespace PlayerScripts
 {
@@ -84,6 +85,15 @@ namespace PlayerScripts
         {
             if(jump)
                 playerStats.DecreaseHealth(17);
+        }
+
+        private void OnCollisionEnter(Collision other) 
+        {
+            if(other.gameObject.tag == "Enemy")
+            {
+                float damage = other.gameObject.GetComponent<Enemy>()._damage;
+                playerStats.DecreaseHealth(damage);
+            }
         }
     }
 }
