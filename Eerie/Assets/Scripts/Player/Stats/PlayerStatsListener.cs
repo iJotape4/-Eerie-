@@ -91,6 +91,7 @@ namespace PlayerScripts
         {
             if(other.gameObject.tag == "Enemy")
             {
+                playerStats.damageReceivedEvent?.Invoke();
                 float damage = other.gameObject.GetComponent<Enemy>()._damage;
                 playerStats.DecreaseHealth(damage);
             }

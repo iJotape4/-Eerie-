@@ -13,6 +13,7 @@ namespace GameEvents
         {
             playerEvents.deathEvent += CallGameOver;
             playerEvents.interactableFoundEvent += ActivatePressEIcon;
+            playerEvents.damageReceivedEvent += CallRedFlash;
 
             interactionsEvents.biblePickedEvent += WeaponPicked;
             interactionsEvents.holyWaterPickedEvent += WeaponPicked;
@@ -43,6 +44,10 @@ namespace GameEvents
         {
             playerEvents.WeaponPicked(stats);
         }
+
+        void CallRedFlash()=>
+            uiEvents.DisplayDamageFlash();
+        
 
 
         #region playerEvents
