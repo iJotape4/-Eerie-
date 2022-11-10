@@ -21,6 +21,6 @@ namespace Enemies
        public abstract void Patrol();
        public abstract IEnumerator GoToNextPoint(int patrolPoint);
        
-       public abstract void DetectPlayer();
+       public abstract bool DetectPlayer();
     }
 }

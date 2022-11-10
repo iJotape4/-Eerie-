@@ -1770,10 +1770,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6947145961150468335}
-  - component: {fileID: 7485968898251422248}
   - component: {fileID: 7719988747883350610}
   - component: {fileID: 6693869058653302726}
   - component: {fileID: 3933482781812060113}
+  - component: {fileID: 6231889365370823496}
   m_Layer: 10
   m_Name: Zombie
   m_TagString: Enemy
@@ -1803,32 +1803,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7485968898251422248
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7719988747883350613}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da74868c924129743b5e39f76e653696, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _rb: {fileID: 0}
-  _health: 130
-  _stunned: 0
-  _hitted: 0
-  _canPursuit: 1
-  _attackzone: 1.2
-  _range: 20
-  _speed: 2
-  _walkSpeed: 2
-  _runSpeed: 5
-  _zombieRunner: 0
-  pushForce: 0
-  meshRenderers: []
-  _anim: {fileID: 0}
 --- !u!95 &7719988747883350610
 Animator:
   serializedVersion: 4
@@ -1879,6 +1853,33 @@ CapsuleCollider:
   m_Height: 1.75
   m_Direction: 1
   m_Center: {x: 0, y: 0.9, z: 0}
+--- !u!114 &6231889365370823496
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7719988747883350613}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44c6461b648eef846879720f910b5be7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _health: 100
+  _maxHealt: 100
+  _armor: 0
+  _damage: 10
+  anim: {fileID: 0}
+  points: []
+  currentPatrolPoint: 0
+  _range: 20
+  _speed: 1
+  _stunned: 0
+  _hitted: 0
+  _canPursuit: 1
+  _attackzone: 1.2
+  pushForce: 0
+  meshRenderers: []
 --- !u!1 &7980050844157049020
 GameObject:
   m_ObjectHideFlags: 0

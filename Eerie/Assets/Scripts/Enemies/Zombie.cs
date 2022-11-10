@@ -20,6 +20,18 @@ namespace Enemies
         protected string _animHittedTrigger = "Hitted";
         protected string _animDeathTrigger = "Death";
 
+        protected string animZombieIdle = "Anim_ZombieIdle";
+        protected string animZombieWalk = "Anim_ZombieWalk";
+        protected string[] animZombieAttacks = 
+        { 
+        "Anim_ZombieAttack", 
+        "Anim_Zombie2Attack", 
+        "Anim_SubBossAttack1", 
+        "Anim_SubBossAttack2",
+        "Anim_SubBossAttack3", 
+        "Anim_SubBossAttack4"
+        };
+
         public new void Start()
         {
             base.Start();
@@ -38,29 +50,104 @@ namespace Enemies
             }
         }
 
+        public void Update()
+        {
+            Walk();
+        }
+
        public override void Walk()
        {
-
+           if(DetectPlayer() && _canPursuit)
+            {                
+                anim.SetBool(_animPlayerDetectedBool, true);
+                FollowPlayer();
+            }
+            else
+            {
+                anim.SetBool(_animAttackZoneBool, false);
+                Patrol();
+            }
        }
 
         public override void Patrol()
-       {
-
-       }
+        {
+            if (points.Length == 0)
+            {
+                anim.Play(animZombieIdle);
+                return;
+            }
+            StartCoroutine(GoToNextPoint(currentPatrolPoint));
+        }
 
        public override IEnumerator GoToNextPoint(int patrolPoint)
        {
+            Vector3 target = points[patrolPoint].transform.position;
+            anim.Play(animZombieWalk);
+            transform.LookAt(points[patrolPoint]);
+            transform.position = Vector3.MoveTowards(transform.position, target, _speed * Time.deltaTime);
+
+            if (transform.position.x == target.x && transform.position.z == target.z)            
+                currentPatrolPoint++;       
+
+            if (currentPatrolPoint == points.Length )
+                currentPatrolPoint = 0;
             yield return null;
        }
-       
-        public override void DetectPlayer()
-       {
+      
+      public Transform DoRayCast()
+      {          
+            RaycastHit hit;
+            Vector3 rayDirection =  transform.forward*_range;
+            Ray detectionRay = new Ray(transform.position, rayDirection);
+            Debug.DrawRay(transform.position, rayDirection, Color.green);
 
+            if (Physics.Raycast(detectionRay, out hit))
+                return hit.transform;
+                       
+           return null;
+      }
+       
+        public override bool DetectPlayer()
+       {          
+            var selection = DoRayCast();
+            if(selection==null)
+                return false;
+
+            if(selection.CompareTag("Untagged"))
+                return false;
+
+            if(selection.CompareTag("Player"))
+                return true;
+            
+            return false;
        }
        
         public  void FollowPlayer()
        {
+            var selection = DoRayCast();
 
+            if(selection==null)
+                return;
+
+            if(Vector3.Distance(transform.position, selection.position) < _attackzone)
+            {
+                anim.SetBool(_animAttackZoneBool, true);
+            }
+            else
+            {
+                anim.SetBool(_animAttackZoneBool, false);
+            }
+
+            foreach (string animation in animZombieAttacks)
+            {
+                if (anim.GetCurrentAnimatorStateInfo(0).IsName(animation))               
+                    //This stops the zombie to move while is attacking
+                    return;
+                
+            }
+            //Move Towards Player
+            transform.position = Vector3.MoveTowards(transform.position, selection.transform.position, _speed * Time.deltaTime);
+            transform.LookAt(selection.transform.position);
        }
 
        public void AttackWithHands()
