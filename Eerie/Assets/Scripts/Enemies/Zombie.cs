@@ -20,6 +20,24 @@ namespace Enemies
         protected string _animHittedTrigger = "Hitted";
         protected string _animDeathTrigger = "Death";
 
+        public new void Start()
+        {
+            base.Start();
+            meshRenderers= GetComponentsInChildren<SkinnedMeshRenderer>();
+
+            foreach(Transform GO in GetComponentsInChildren<Transform>())
+            {
+                if(GO.gameObject.name == "PatrolPoints")
+                {
+                    points = GO.GetComponentsInChildren<Transform>();
+
+                    for (int i =0; i<points.Length-1;i++)
+                        points[i] = points[i+1];
+                    GO.SetParent(null);
+                }
+            }
+        }
+
        public override void Walk()
        {
 
